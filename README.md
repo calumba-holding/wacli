@@ -45,7 +45,7 @@ Run (local build only):
 
 ## Quick start
 
-Default store directory is `~/.wacli`; override with `--store DIR` or `WACLI_STORE_DIR`.
+Default store directory is the XDG state directory on Linux (`~/.local/state/wacli`) and `~/.wacli` elsewhere. Existing Linux `~/.wacli` stores keep working; override with `--store DIR` or `WACLI_STORE_DIR`.
 
 ```bash
 # 1) Authenticate (shows QR), then bootstrap sync
@@ -84,6 +84,9 @@ pnpm wacli send file --to 1234567890 --file ./pic.jpg --caption "hi"
 # Or override display name
 pnpm wacli send file --to 1234567890 --file /tmp/abc123 --filename report.pdf
 
+# React to a message (omit --reaction for the default; use --reaction "" to clear)
+pnpm wacli send react --to 1234567890 --id <message-id>
+
 # List groups and manage them
 pnpm wacli groups list
 pnpm wacli groups rename --jid 123456789@g.us --name "New name"
@@ -113,6 +116,7 @@ pnpm wacli presence paused --to 1234567890
 - `wacli messages context --chat JID --id MSG_ID [--before N] [--after N]`
 - `wacli send text --to PHONE_OR_JID --message TEXT [--reply-to MSG_ID] [--reply-to-sender JID]`
 - `wacli send file --to PHONE_OR_JID --file PATH [--caption TEXT] [--filename NAME] [--mime TYPE]`
+- `wacli send react --to PHONE_OR_JID --id MSG_ID [--reaction TEXT] [--sender JID]`
 - `wacli media download --chat JID --id MSG_ID [--output PATH]`
 - `wacli contacts search <query>`
 - `wacli contacts show --jid JID`
@@ -137,7 +141,7 @@ pnpm wacli presence paused --to 1234567890
 
 ## Storage
 
-Defaults to `~/.wacli` (override with `--store DIR`).
+Defaults to `~/.local/state/wacli` on Linux and `~/.wacli` elsewhere. Existing Linux `~/.wacli` stores are reused when the XDG state store does not exist. Override with `--store DIR`.
 
 Global flags:
 
