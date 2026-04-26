@@ -44,6 +44,7 @@
 ### Docs
 
 - Maintainers: add CODEOWNERS and maintainer contact info.
+- Agents: add AGENTS.md for AI agent guidance. (#190 — thanks @adhitShet)
 
 ### Chore
 
